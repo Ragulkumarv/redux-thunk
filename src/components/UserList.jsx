@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsers } from "../slice/userSlice";
+import cssmodule from "./button.module.css";
 
 const UserList = () => {
   const dispatch = useDispatch();
@@ -7,7 +8,7 @@ const UserList = () => {
   return (
     <section>
       <div className="flex flex-col gap-2 items-center justify-center">
-        <h1>Redux Toolkit Thunk </h1>
+        <h1 className={cssmodule.primary}>Redux Toolkit Thunk </h1>
         <button
           onClick={() => dispatch(fetchUsers())}
           className="px-6 py-2 rounded-lg bg-amber-400 cursor-pointer"
@@ -20,7 +21,9 @@ const UserList = () => {
       {!!users && (
         <ul>
           {users.map((item) => (
-            <li key={item.id}>{item.name}</li>
+            <li key={item.id} className={cssmodule.secondary}>
+              {item.name}
+            </li>
           ))}
         </ul>
       )}
